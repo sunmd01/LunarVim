@@ -24,6 +24,7 @@ function plugin_loader.init(opts)
     log = { level = "warn" },
     git = {
       clone_timeout = 300,
+      default_url_format = 'https://hub.fastgit.xyz/%s',
     },
     display = {
       open_fn = function()
@@ -37,7 +38,7 @@ function plugin_loader.init(opts)
   end
 
   if not utils.is_directory(install_path) then
-    vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+    vim.fn.system { "git", "clone", "--depth", "1", "https://hub.fastgit.xyz/wbthomason/packer.nvim", install_path }
     vim.cmd "packadd packer.nvim"
     -- IMPORTANT: we only set this the very first time to avoid constantly triggering the rollback function
     -- https://github.com/wbthomason/packer.nvim/blob/c576ab3f1488ee86d60fd340d01ade08dcabd256/lua/packer.lua#L998-L995
